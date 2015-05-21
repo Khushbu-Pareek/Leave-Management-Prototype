@@ -4,15 +4,64 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Leave Managment Tracker</title>
 	<link rel="stylesheet" type="text/css" href="../css/employee.css"/>
+  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<script src="../js/employee.js"></script>
 </head>
 	<body>
-	<nav class="vertical">
-    <ul>
-      <li>
-        <a href="#">Home</a>
-	  </li>
-	</ul>
-</nav>
+	<header></header>
+    <nav class="vertical">
+    	<ul>
+	      	<li>
+	        	<a href="#">Leave Management</a>
+		  	</li>
+		</ul>
+	</nav>
+	<aside>
+		<h4><a class="link" href="#chart">Leave Tally</a></h4>
+		<h4><a class="link" href="#upcoming">Upcoming</a></h4>
+		<h4><a class="link" href="#history">History</a></h4>
+	</aside>
+    <article>
+        <section>
+            <div class="chart tab" id="chart">
+            	<button type="button" id="leaveform">Apply</button>
+            </div>
+            <div class="leaveform hide tab" id="leavefrm">
+            	<div class="apply-box">
+            		<div class="from-date floatleft">
+            			<label>From Date</label>
+            			<input type="text" id="fromdatepicker">
+            		</div>
+            		<div class="to-date floatleft">
+            			<label>To Date</label>
+            			<input type="text" id="todatepicker">
+            		</div>
+            		<div class="type">
+            			<label>Type</label>
+            			<input type="text" id="type">
+            		</div>
+            		<div class="description">
+            			<label>Description</label>
+            			<textarea rows="4" cols="50" id="desc"></textarea>
+            		</div>
+            		<div class="btn">
+            			<button id="leaveapply">Apply</button>	
+            			<button id="leavecancel">Cancel</button>	
+
+            		</div>
+            	</div>
+            </div>
+            <div class="upcoming hide tab" id="upcoming">
+            	Upcoming
+            </div>
+            <div class="history hide tab" id="history">
+            	History
+            </div>
+        </section>
+    </article>
+     
+    <footer></footer>
 	</body>
 </html>
