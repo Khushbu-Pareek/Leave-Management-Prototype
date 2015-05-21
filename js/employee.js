@@ -9,6 +9,10 @@ function initWidgets(){
     $("#todatepicker").datepicker();
 }
 
+/*=====================================
+=            Binding Events           =
+=====================================*/
+
 function bindEvents(){
     $('#leaveform').on("click", function() {
         $('#leavefrm').show();
@@ -33,7 +37,11 @@ function bindEvents(){
         $(theDiv).show();
     });
 }
+/*-----  End of event bindings  ------*/
 
+/*=====================================
+=            Render Pie Chart         =
+=====================================*/
 
 function renderLeaveTallyChart(){
     var sampleData = [{
@@ -47,8 +55,8 @@ function renderLeaveTallyChart(){
         y: 8
     }];
 
-    var height = 280;
-    var width = 280;
+    var height = 400;
+    var width = 400;
 
     nv.addGraph(function() {
         var chart = nv.models.pieChart()
@@ -72,6 +80,7 @@ function renderLeaveTallyChart(){
     });
 }
 
+/*-----  End of rendering Pie chart  ------*/
 
 /*=====================================
 =            Bootstrapping            =

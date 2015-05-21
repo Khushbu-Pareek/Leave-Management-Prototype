@@ -27,7 +27,7 @@
         <section>
             <div class="chart tab" id="chart">
                 <svg id="LeaveTally" class="mypiechart"></svg>
-            	<button type="button" id="leaveform">Apply</button>
+            	<button class="btn floatright" type="button" id="leaveform">Apply</button>
             </div>
             <div class="leaveform hide tab" id="leavefrm">
             	<div class="apply-box">
@@ -41,15 +41,26 @@
             		</div>
             		<div class="type">
             			<label>Type</label>
-            			<input type="text" id="type">
+                        <select name="leaveType" class="leaveType">
+                            <option value="">Select Leave Type</option>
+                            
+                            <option value="PTO">Paid Time Off (PTO)</option>
+                            
+                            <option value="ML">Maternity Leave</option>
+                            
+                            <option value="PL">Paternity Leave</option>
+                            
+                            <option value="COF">Compensatory-Off</option>
+                            
+                        </select>
             		</div>
             		<div class="description">
             			<label>Description</label>
             			<textarea rows="4" cols="50" id="desc"></textarea>
             		</div>
-            		<div class="btn">
-            			<button id="leaveapply">Apply</button>	
-            			<button id="leavecancel">Cancel</button>	
+            		<div class="frmbtn">
+            			<button class="btn" id="leaveapply">Apply</button>	
+            			<button class="btn" id="leavecancel">Cancel</button>	
 
             		</div>
             	</div>
