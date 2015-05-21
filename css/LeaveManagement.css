@@ -1,0 +1,14 @@
+text {
+    font: 12px sans-serif;
+}
+#LeaveTally {
+    display: block;
+    height: 280px;
+    width: 280px;
+}
+html, body {
+    margin: 50px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
