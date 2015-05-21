@@ -2,16 +2,73 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link href="../nvd3/build/nv.d3.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Leave Managment Tracker</title>
+    <link href="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.css" rel="stylesheet" type="text/css">
     <link href="../css/LeaveManagement.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/employee.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 </head>
 <body>
+	<header></header>
+    <nav class="vertical">
+    	<ul>
+	      	<li>
+	        	<a href="#">Leave Management</a>
+		  	</li>
+		</ul>
+	</nav>
+	<aside>
+		<h4><a class="link" href="#chart">Leave Tally</a></h4>
+		<h4><a class="link" href="#upcoming">Upcoming</a></h4>
+		<h4><a class="link" href="#history">History</a></h4>
+	</aside>
+    <article>
+        <section>
+            <div class="chart tab" id="chart">
+                <svg id="LeaveTally" class="mypiechart"></svg>
+            	<button type="button" id="leaveform">Apply</button>
+            </div>
+            <div class="leaveform hide tab" id="leavefrm">
+            	<div class="apply-box">
+            		<div class="from-date floatleft">
+            			<label>From Date</label>
+            			<input type="text" id="fromdatepicker">
+            		</div>
+            		<div class="to-date floatleft">
+            			<label>To Date</label>
+            			<input type="text" id="todatepicker">
+            		</div>
+            		<div class="type">
+            			<label>Type</label>
+            			<input type="text" id="type">
+            		</div>
+            		<div class="description">
+            			<label>Description</label>
+            			<textarea rows="4" cols="50" id="desc"></textarea>
+            		</div>
+            		<div class="btn">
+            			<button id="leaveapply">Apply</button>	
+            			<button id="leavecancel">Cancel</button>	
 
-    <svg id="LeaveTally" class="mypiechart"></svg>
+            		</div>
+            	</div>
+            </div>
+            <div class="upcoming hide tab" id="upcoming">
+            	Upcoming
+            </div>
+            <div class="history hide tab" id="history">
+            	History
+            </div>
+        </section>
+    </article>
+     
+    <footer></footer>
 
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
-    <script src="../nvd3/build/nv.d3.js"></script>
-    <script src="../nvd3/examples/lib/stream_layers.js"></script>
+    <script src="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.js"></script>
     <script src="../js/employee.js"></script>
-</body>
+	</body>
 </html>

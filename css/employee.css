@@ -1,0 +1,77 @@
+.floatleft {
+  float: left;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+/*body {
+    width: 940px;
+    margin: 0 auto;
+    font: 10pt/1.5em Helvetica,"Helvetica neue", Arial, sans-serif;
+}*/
+
+/*HTML 5 specific*/
+header,
+section,
+article,
+aside,
+footer {
+  display: block;
+}
+aside {
+  float: left;
+  width: 11%;
+}
+article {
+  float: right;
+  width: 89%;
+}
+section {
+  margin: 20px;
+}
+nav.vertical {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  text-align: center;
+  background-color: #333;
+}
+nav.vertical > ul {
+  list-style-type: none;
+}
+nav.vertical > ul > li {
+  display: block;
+}
+nav.vertical a {
+  color: #fff;
+  text-decoration: none;
+}
+.apply-box {
+  display: block;
+}
+.apply-box {
+  position: relative;
+  top: 37px;
+}
+.apply-box label {
+  position: absolute;
+  top: -20px;
+}
+.from-date {
+  margin-right: 10px;
+}
+.to-date {
+  margin-right: 10px;
+}
+.description {
+  position: relative;
+  top: 20px;
+}
+.btn {
+  position: relative;
+  top: 20px;
+}
