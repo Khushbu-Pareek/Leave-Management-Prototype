@@ -1,85 +1,125 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Leave Managment Tracker</title>
-    <link href="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.css" rel="stylesheet" type="text/css">
-    <link href="../css/LeaveManagement.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../css/employee.css"/>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-</head>
-<body>
-	<header></header>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Leave Managment Tracker</title>
+        <link href="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.css" rel="stylesheet" type="text/css">
+        <link href="../css/LeaveManagement.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="../css/employee.css"/>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    </head>
+    <body>
+    <header></header>
     <nav class="vertical">
-    	<ul>
-	      	<li>
-	        	<a href="#">Leave Management</a>
-		  	</li>
-		</ul>
-	</nav>
-	<aside>
-		<h4><a class="link" href="#chart">Leave Tally</a></h4>
-		<h4><a class="link" href="#upcoming">Upcoming</a></h4>
-		<h4><a class="link" href="#history">History</a></h4>
-	</aside>
+        <ul>
+            <li>
+                <a href="#">Leave Management</a>
+            </li>
+        </ul>
+    </nav>
+    <aside>
+        <h4><a class="link" href="#chart">Leave Tally</a></h4>
+        <h4><a class="link" href="#upcoming">Upcoming</a></h4>
+        <h4><a class="link" href="#history">History</a></h4>
+    </aside>
     <article>
         <section>
             <div class="chart tab" id="chart">
-                <svg id="LeaveTally" class="mypiechart"></svg>
-            	<button class="btn floatright" type="button" id="leaveform">Apply</button>
+            <svg id="LeaveTally" class="mypiechart"></svg>
+            <button class="btn floatright" type="button" id="leaveform">Apply</button>
+        </div>
+        <div class="leaveform hide tab" id="leavefrm">
+            <div class="apply-box">
+            <div class="col1">
+                <div class="from-date floatleft">
+                    <label>From Date</label>
+                    <input type="text" id="fromdatepicker">
+                </div>
+                <div class="to-date floatleft">
+                    <label>To Date</label>
+                    <input type="text" id="todatepicker">
+                </div>
             </div>
-            <div class="leaveform hide tab" id="leavefrm">
-            	<div class="apply-box">
-            		<div class="from-date floatleft">
-            			<label>From Date</label>
-            			<input type="text" id="fromdatepicker">
-            		</div>
-            		<div class="to-date floatleft">
-            			<label>To Date</label>
-            			<input type="text" id="todatepicker">
-            		</div>
-            		<div class="type">
-            			<label>Type</label>
-                        <select name="leaveType" class="leaveType">
-                            <option value="">Select Leave Type</option>
-                            
-                            <option value="PTO">Paid Time Off (PTO)</option>
-                            
-                            <option value="ML">Maternity Leave</option>
-                            
-                            <option value="PL">Paternity Leave</option>
-                            
-                            <option value="COF">Compensatory-Off</option>
-                            
-                        </select>
-            		</div>
-            		<div class="description">
-            			<label>Description</label>
-            			<textarea rows="4" cols="50" id="desc"></textarea>
-            		</div>
-            		<div class="frmbtn">
-            			<button class="btn" id="leaveapply">Apply</button>	
-            			<button class="btn" id="leavecancel">Cancel</button>	
+            <div class="col1">
+                <div class="type">
+                    <label>Type</label>
+                    <select name="leaveType" class="leaveType">
+                        <option value="">Select Leave Type</option>
+                        
+                        <option value="PTO">Paid Time Off (PTO)</option>
+                        
+                        <option value="ML">Maternity Leave</option>
+                        
+                        <option value="PL">Paternity Leave</option>
+                        
+                        <option value="COF">Compensatory-Off</option>
+                        
+                    </select>
+                </div>
+            </div>
+                <div class="description">
+                    <label>Description</label>
+                    <textarea rows="4" cols="50" id="desc"></textarea>
+                </div>
+                <div class="frmbtn">
+                    <button class="btn" id="leaveapply">Apply</button>
+                    <button class="btn" id="leavecancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="upcoming hide tab" id="upcoming">
+            <table class="tblUpcoming">
+                <tbody>
+                    <tr class="trHeads">
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Type</th>
+                        <th>Duration</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>03/05/2017</td>
+                        <td>23/05/2017</td>
+                        <td>PTO</td>
+                        <td>20</td>
+                        <td></td>
+                        <td>Approved</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="history hide tab" id="history">
+             <table class="tblHistory">
+                <tbody>
+                    <tr class="trHeads">
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Type</th>
+                        <th>Duration</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>03/05/2017</td>
+                        <td>23/05/2017</td>
+                        <td>PTO</td>
+                        <td>20</td>
+                        <td></td>
+                        <td>Approved</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
 
-            		</div>
-            	</div>
-            </div>
-            <div class="upcoming hide tab" id="upcoming">
-            	Upcoming
-            </div>
-            <div class="history hide tab" id="history">
-            	History
-            </div>
-        </section>
-    </article>
-     
-    <footer></footer>
-
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
-    <script src="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.js"></script>
-    <script src="../js/employee.js"></script>
-	</body>
+<footer></footer>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+<script src="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.js"></script>
+<script src="../js/employee.js"></script>
+</body>
 </html>

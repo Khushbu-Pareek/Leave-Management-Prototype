@@ -126,3 +126,14 @@ nav.vertical a {
 input[type="text"]{
   height: 25px;
 }
+.tblUpcoming, .tblHistory{
+  width: 100%;
+}
+.tblHistory tr:first-child th, .tblUpcoming tr:first-child th{
+  text-align: left;
+  border-bottom: 1px solid;
+}
+
+.tblUpcoming tr td, .tblHistory tr td {
+    padding-top: 20px;
+}

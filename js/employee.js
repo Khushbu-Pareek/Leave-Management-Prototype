@@ -1,19 +1,29 @@
-function init(){
+function init() {
     initWidgets();
     bindEvents();
     renderLeaveTallyChart();
 }
 
-function initWidgets(){
-    $("#fromdatepicker").datepicker();
-    $("#todatepicker").datepicker();
+function initWidgets() {
+    $("#fromdatepicker").datepicker({
+        minDate: 0,
+        maxDate: '+1Y+6M',
+        onSelect: function(dateStr) {
+            var min = $(this).datepicker('getDate'); // Get selected date
+            $("#todatepicker").datepicker('option', 'minDate', min || '0'); // Set other min, default to today
+        }
+    });
+    $("#todatepicker").datepicker({
+        minDate: '0',
+        maxDate: '+1Y+6M',
+    });
 }
 
 /*=====================================
 =            Binding Events           =
 =====================================*/
 
-function bindEvents(){
+function bindEvents() {
     $('#leaveform').on("click", function() {
         $('#leavefrm').show();
     });
@@ -21,8 +31,9 @@ function bindEvents(){
     $('#leavecancel').on("click", function() {
         $('#fromdatepicker').datepicker('setDate', null);
         $('#todatepicker').datepicker('setDate', null);
-        $('.apply-box input[type="text"]').val('');
+        $('.apply-box .leaveType').val('');
         $('.apply-box textarea').val('');
+        $('#leavefrm').hide();
     });
 
     $('#leaveapply').on("click", function() {
@@ -30,7 +41,9 @@ function bindEvents(){
         console.log($('#todatepicker').val());
         $('#type').val();
         $('#desc').val();
+        showConfirmationBox();
     });
+
     $("aside h4 a").click(function() {
         $('.tab').hide();
         theDiv = $(this).attr("href");
@@ -43,7 +56,7 @@ function bindEvents(){
 =            Render Pie Chart         =
 =====================================*/
 
-function renderLeaveTallyChart(){
+function renderLeaveTallyChart() {
     var sampleData = [{
         key: "Total Leave",
         y: 10
@@ -79,8 +92,31 @@ function renderLeaveTallyChart(){
         return chart;
     });
 }
-
 /*-----  End of rendering Pie chart  ------*/
+
+var leaveDetails = {};
+
+function showConfirmationBox() {
+    var diff = ($('#todatepicker').datepicker("getDate") - $('#fromdatepicker').datepicker("getDate")) / (1000 * 60 * 60 * 24);
+    if (confirm("Are you sure you want to apply " + diff + " days leave") == true) {
+        $('#leavefrm').hide();
+        leaveDetails['startDate'] = $('#fromdatepicker').val();
+        leaveDetails['endDate'] = $('#todatepicker').val();
+        leaveDetails['type'] = $('.leaveType').val();
+        leaveDetails['desc'] = $('#desc').val();
+        leaveDetails['duration'] = diff;
+        leaveDetails['status'] = "Waiting";
+        updateUpcomingTable();
+        $('.tab').hide();
+        $('#upcoming').show();
+    } else {
+        $('#leavefrm').hide();
+    }
+}
+
+function updateUpcomingTable() {
+    $(".tblUpcoming > tbody").append("<tr><td> " + leaveDetails['startDate'] + "</td><td> " + leaveDetails['endDate'] + "</td>  <td>" + leaveDetails['type'] + "</td><td>" + leaveDetails['duration'] + "</td><td>" + leaveDetails['desc'] + "</td> <td>" + leaveDetails['status'] + "</td></tr>");
+}
 
 /*=====================================
 =            Bootstrapping            =
@@ -89,4 +125,3 @@ function renderLeaveTallyChart(){
 init();
 
 /*-----  End of Bootstrapping  ------*/
-
