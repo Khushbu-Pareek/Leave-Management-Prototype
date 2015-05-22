@@ -49,6 +49,22 @@ function bindEvents() {
         theDiv = $(this).attr("href");
         $(theDiv).show();
     });
+
+    $('.managerTab').on("click", function() {
+        $('.requests').show();
+    });
+
+    $('.requests').on("click", function() {
+        $('#managerField').show();
+    });
+
+    $('.request-reject').on("click", function() {
+        showDialog();
+    });
+
+    $('#dialog-close').on("click", function() {
+        $("#dialog-modal").dialog('close');
+    });
 }
 /*-----  End of event bindings  ------*/
 
@@ -116,6 +132,10 @@ function showConfirmationBox() {
 
 function updateUpcomingTable() {
     $(".tblUpcoming > tbody").append("<tr><td> " + leaveDetails['startDate'] + "</td><td> " + leaveDetails['endDate'] + "</td>  <td>" + leaveDetails['type'] + "</td><td>" + leaveDetails['duration'] + "</td><td>" + leaveDetails['desc'] + "</td> <td>" + leaveDetails['status'] + "</td></tr>");
+}
+
+function showDialog(){    
+    $("#dialog-modal").dialog();
 }
 
 /*=====================================

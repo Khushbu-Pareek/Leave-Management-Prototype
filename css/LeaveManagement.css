@@ -1,10 +1,29 @@
-text {
-    font: 18px sans-serif;
-}
 #LeaveTally {
     display: block;
     height: 400px;
     width: 400px;
     position: relative;
     left: 26%
+}
+.managerTab {
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border-radius: 15px;
+}
+table{
+	width:95%;
+	min-width: 100px;
+	text-align: left;
+}
+.request-approve,
+.request-reject {
+	border:none;
+	background: none;
+	cursor: pointer;
+}
+.request-reject{
+	color: red;
+}
+.request-approve{
+	color: green;
 }
