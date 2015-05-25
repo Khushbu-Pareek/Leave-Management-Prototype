@@ -79,6 +79,7 @@ function bindEvents() {
 =====================================*/
 
 function renderLeaveTallyChart() {
+
     var sampleData = [{
         key: "Total Leave",
         y: 10
@@ -120,7 +121,16 @@ var leaveDetails = {};
 
 function showConfirmationBox() {
     var diff = ($('#todatepicker').datepicker("getDate") - $('#fromdatepicker').datepicker("getDate")) / (1000 * 60 * 60 * 24);
-    if (confirm("Are you sure you want to apply " + diff + " days leave") == true) {
+    if(($('#fromdatepicker').val() == '') || ($('#todatepicker').val() == '')) {
+       alert("Please select dates"); 
+       return;
+    }
+    else if($('.leaveType').val() == '')
+    {
+         alert("Please select leave type"); 
+       return;
+    } 
+    else if (confirm("Are you sure you want to apply " + diff + " days leave") == true) {
         $('#leavefrm').hide();
         leaveDetails['startDate'] = $('#fromdatepicker').val();
         leaveDetails['endDate'] = $('#todatepicker').val();
@@ -158,6 +168,7 @@ init();
 =====================================*/
 
 function renderLeaveTrackerChart() {
+
     var sampleData = [{
         key: "Total Leave",
         y: 20
