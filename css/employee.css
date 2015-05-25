@@ -141,3 +141,11 @@ margin-top: 20px;
 #leaveapply{
   margin-right: 20px;
 }
+
+#dialog-modal textarea{
+  width: 100%;
+}
+#dialog-modal button{
+  margin-left: 35%;
+  margin-top: 15px;
+}

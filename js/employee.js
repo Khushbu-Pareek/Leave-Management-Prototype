@@ -24,93 +24,97 @@ function initWidgets() {
 =====================================*/
 
 function bindEvents() {
-        $('#leaveform').on("click", function() {
-            $('#leavefrm').show();
-        });
+    $('#leaveform').on("click", function() {
+        $('#leavefrm').show();
+    });
 
-        $('#leavecancel').on("click", function() {
-            $('#fromdatepicker').datepicker('setDate', null);
-            $('#todatepicker').datepicker('setDate', null);
-            $('.apply-box .leaveType').val('');
-            $('.apply-box textarea').val('');
-            $('#leavefrm').hide();
-        });
+    $('#leavecancel').on("click", function() {
+        $('#fromdatepicker').datepicker('setDate', null);
+        $('#todatepicker').datepicker('setDate', null);
+        $('.apply-box .leaveType').val('');
+        $('.apply-box textarea').val('');
+        $('#leavefrm').hide();
+    });
 
-        $('#leaveapply').on("click", function() {
-            console.log($('#fromdatepicker').val());
-            console.log($('#todatepicker').val());
-            $('#type').val();
-            $('#desc').val();
-            showConfirmationBox();
-        });
+    $('#leaveapply').on("click", function() {
+        console.log($('#fromdatepicker').val());
+        console.log($('#todatepicker').val());
+        $('#type').val();
+        $('#desc').val();
+        showConfirmationBox();
+    });
 
-        $("aside h4 a").click(function() {
-            $('.tab').hide();
-            theDiv = $(this).attr("href");
-            $(theDiv).show();
-        });
+    $("aside h4 a").click(function() {
+        $('.tab').hide();
+        theDiv = $(this).attr("href");
+        $(theDiv).show();
+    });
 
-        $('.managerTab').on("click", function() {
-            $('.requests').show();
-        });
+    $('.managerTab').on("click", function() {
+        $('.requests').show();
+    });
 
-        $('.requests').on("click", function() {
-            $('#leaveTrackerChart').show();
-            $('#managerField').show();
-            renderLeaveTrackerChart();
-        });
+    $('#managerField').on("click", function() {
+        $('#managerField').show();
+    });
 
-        $('.request-reject').on("click", function() {
-            showDialog();
-        });
+    $('.linkReport').on("click", function() {
+        $('#managerField').hide();
+        $('#leaveReports').show();
+        renderLeaveTrackerChart();
+    });
 
-        $('#dialog-close').on("click", function() {
-            $("#dialog-modal").dialog('close');
-        });
-    }
-    /*-----  End of event bindings  ------*/
+    $('.request-reject').on("click", function() {
+        showDialog();
+    });
+
+    $('#dialog-close').on("click", function() {
+        $("#dialog-modal").dialog('close');
+    });
+}
+/*-----  End of event bindings  ------*/
 
 /*=====================================
 =            Render Pie Chart         =
 =====================================*/
 
 function renderLeaveTallyChart() {
-        var sampleData = [{
-            key: "Total Leave",
-            y: 10
-        }, {
-            key: "Applied Leave",
-            y: 2
-        }, {
-            key: "Remaining Leave",
-            y: 8
-        }];
+    var sampleData = [{
+        key: "Total Leave",
+        y: 10
+    }, {
+        key: "Applied Leave",
+        y: 2
+    }, {
+        key: "Remaining Leave",
+        y: 8
+    }];
 
-        var height = 400;
-        var width = 400;
+    var height = 400;
+    var width = 400;
 
-        nv.addGraph(function() {
-            var chart = nv.models.pieChart()
-                .x(function(d) {
-                    return d.key
-                })
-                .y(function(d) {
-                    return d.y
-                })
-                .width(width)
-                .height(height);
+    nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+            .x(function(d) {
+                return d.key
+            })
+            .y(function(d) {
+                return d.y
+            })
+            .width(width)
+            .height(height);
 
-            d3.select("#LeaveTally")
-                .datum(sampleData)
-                .transition().duration(1200)
-                .attr('width', width)
-                .attr('height', height)
-                .call(chart);
+        d3.select("#LeaveTally")
+            .datum(sampleData)
+            .transition().duration(1200)
+            .attr('width', width)
+            .attr('height', height)
+            .call(chart);
 
-            return chart;
-        });
-    }
-    /*-----  End of rendering Pie chart  ------*/
+        return chart;
+    });
+}
+/*-----  End of rendering Pie chart  ------*/
 
 var leaveDetails = {};
 
@@ -154,40 +158,87 @@ init();
 =====================================*/
 
 function renderLeaveTrackerChart() {
-        var sampleData = [{
-            key: "Total Leave",
-            y: 20
-        }, {
-            key: "Approved Leave",
-            y: 7
-        }, {
-            key: "Pending Leave",
-            y: 13
-        }];
+    var sampleData = [{
+        key: "Total Leave",
+        y: 20
+    }, {
+        key: "Approved Leave",
+        y: 7
+    }, {
+        key: "Pending Leave",
+        y: 13
+    }];
 
-        var height = 350;
-        var width = 350;
+    var height = 350;
+    var width = 350;
 
-        nv.addGraph(function() {
-            var chart = nv.models.pieChart()
-                .x(function(d) {
-                    return d.key
-                })
-                .y(function(d) {
-                    return d.y
-                })
-                .width(width)
-                .height(height);
+    nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+            .x(function(d) {
+                return d.key
+            })
+            .y(function(d) {
+                return d.y
+            })
+            .width(width)
+            .height(height);
 
-            d3.select("#leaveTracker")
-                .datum(sampleData)
-                .transition().duration(1200)
-                .attr('width', width)
-                .attr('height', height)
-                .call(chart);
+        d3.select("#leaveTracker")
+            .datum(sampleData)
+            .transition().duration(1200)
+            .attr('width', width)
+            .attr('height', height)
+            .call(chart);
 
-            return chart;
-        });
+        return chart;
+    });
 
 }
-    /*-----  End of rendering Pie chart  ------*/
+/*-----  End of rendering Pie chart  ------*/
+
+/*=====================================
+=            Render Line Graph         =
+=====================================*/
+
+nv.addGraph(function() {
+  var chart = nv.models.lineChart()
+    .useInteractiveGuideline(true)
+    ;
+
+  chart.xAxis
+    .axisLabel('Time (ms)')
+    .tickFormat(d3.format(',r'))
+    ;
+
+  chart.yAxis
+    .axisLabel('No. of leaves (v)')
+    .tickFormat(d3.format('.02f'))
+    ;
+
+  d3.select('#linechart svg')
+    .datum(data())
+    .transition().duration(100) 
+    .call(chart)
+    ;
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});
+
+function data() {
+  var sin = [];
+
+  for (var i = 0; i < 100; i++) {
+    sin.push({x: i, y: Math.sin(i/10)});
+  }
+
+  return [
+    {
+      values: sin,
+      key: 'Leaves',
+      color: '#ABB5F2'
+    }
+  ];
+}
+/*-----  End of rendering line graph  ------*/
