@@ -79,7 +79,7 @@ function renderLeaveTallyChart() {
             key: "Total Leave",
             y: 10
         }, {
-            key: "Applied Leave",
+            key: "Used Leave",
             y: 2
         }, {
             key: "Remaining Leave",
@@ -116,7 +116,10 @@ var leaveDetails = {};
 
 function showConfirmationBox() {
     var diff = ($('#todatepicker').datepicker("getDate") - $('#fromdatepicker').datepicker("getDate")) / (1000 * 60 * 60 * 24);
-    if (confirm("Are you sure you want to apply " + diff + " days leave") == true) {
+    if(diff == 0) {
+       alert("Select dates"); 
+       return;
+    } else if (confirm("Are you sure you want to apply " + diff + " days leave") == true) {
         $('#leavefrm').hide();
         leaveDetails['startDate'] = $('#fromdatepicker').val();
         leaveDetails['endDate'] = $('#todatepicker').val();
@@ -188,6 +191,5 @@ function renderLeaveTrackerChart() {
 
             return chart;
         });
-
 }
     /*-----  End of rendering Pie chart  ------*/

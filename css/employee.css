@@ -28,6 +28,8 @@ footer {
 aside {
   float: left;
   width: 11%;
+  background-color: rgb(184, 200, 200);
+  text-align: center;
 }
 article {
   float: right;
@@ -106,7 +108,7 @@ nav.vertical a {
   width: 24%;
   line-height: 43px;
   height: 33px;
-  font-size: 18px;
+  font-size: 15px;
 }
 .frmbtn .btn{
   width: 13%;
@@ -114,7 +116,7 @@ nav.vertical a {
 }
 input[type="text"]{
   height: 30px;
-  width: 100%;
+  width: 112%;
 }
 .tblUpcoming, .tblHistory, .tblManager{
   width: 100%;
@@ -140,4 +142,32 @@ margin-top: 20px;
 
 #leaveapply{
   margin-right: 20px;
+}
+#LeaveTally, #leaveTracker {
+    display: block;
+    height: 400px;
+    width: 400px;
+    position: relative;
+    left: 26%
+}
+.managerTab {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+.request-approve,
+.request-reject {
+  border:none;
+  background: none;
+  cursor: pointer;
+}
+.request-reject{
+  color: red;
+}
+.request-approve{
+  color: green;
+}
+.ui-datepicker-calendar, .ui-state-default, .ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-defaul, .ui-datepicker-title{
+  color: purple !important;
 }
