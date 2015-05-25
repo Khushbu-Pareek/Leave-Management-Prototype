@@ -27,7 +27,7 @@
         <h4><a class="link" href="#upcoming">Upcoming</a></h4>
         <h4><a class="link" href="#history">History</a></h4>
         <h4><a class="link requests hide" href="#managerField">Requests</a></h4>
-        <h4><a class="link requests hide" href="#leaveReports">Leave reports</a></h4>
+        <h4><a class="link requests hide linkReport" href="#leaveReports">Leave reports</a></h4>
     </aside>
     <article>
         <section>
@@ -77,6 +77,7 @@
             </div>
         </div>
         <div class="upcoming hide tab" id="upcoming">
+            <h2>Upcoming Leaves</h2>
             <table class="tblUpcoming">
                 <tbody>
                     <tr class="trHeads">
@@ -99,6 +100,7 @@
             </table>
         </div>
         <div class="history hide tab" id="history">
+             <h2>History</h2>
             <table class="tblHistory">
                 <tbody>
                     <tr class="trHeads">
@@ -166,13 +168,25 @@
                 <textarea></textarea>
                 <button type="button" id="dialog-close">Confirm</button>
             </div>
-            <div class="leaveTrackerChart tab" id="leaveTrackerChart">
-                <h3>No. of Requested Leaves/Approved Leaves</h3>
-                <svg id="leaveTracker" class="mypiechart"></svg>
-            </div>
         </div>
         <div class="leaveReports hide tab" id="leaveReports">
-        
+         <div class="filterow">
+                <div class="span3">
+                  <a href="#" class="fbtn btn-primary"><i class="fa fa-filter"></i>&nbsp;  Leave Type</a>
+                </div>
+                 <div class="span3">
+                  <a href="#" class="fbtn btn-primary"><i class="fa fa-filter"></i>&nbsp;  Approval Status</a>
+                </div><div class="span3">
+                  <a href="#" class="fbtn btn-primary"><i class="fa fa-filter"></i>&nbsp;  Employee name</a>
+                </div>
+            </div>
+         <div class="leaveTrackerChart" id="leaveTrackerChart">
+                <h3>Team Leaves</h3>
+                <svg id="leaveTracker" class="mypiechart"></svg>
+            </div>
+            <div id="linechart">
+  <svg></svg>
+</div>
         </div>
     </section>
 </article>
@@ -181,6 +195,7 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
 <script src="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.js"></script>
+
 <script src="../js/employee.js"></script>
 </body>
 </html>
