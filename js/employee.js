@@ -26,6 +26,9 @@ function initWidgets() {
 function bindEvents() {
     $('#leaveform').on("click", function() {
         $('#leavefrm').show();
+       // dialog = $( "#leavefrm" ).dialog({
+          //autoOpen: true,
+      //  });
     });
 
     $('#leavecancel').on("click", function() {
@@ -54,9 +57,13 @@ function bindEvents() {
         $('.requests').show();
     });
 
-    $('.requests').on("click", function() {
+    $('#managerField').on("click", function() {
         $('#managerField').show();
     });
+     $('#leaveReports').on("click", function() {
+            $('#managerField').hide();
+            $('#leaveReports').show();
+        });
 
     $('.request-reject').on("click", function() {
         showDialog();

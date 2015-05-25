@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Leave Managment Tracker</title>
-    <link href="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.css" rel="stylesheet" type="text/css">
-    <link href="../css/LeaveManagement.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../css/employee.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-</head>
-
-<body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Leave Managment Tracker</title>
+        <link href="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.css" rel="stylesheet" type="text/css">
+        <link href="../css/LeaveManagement.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="../css/employee.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+    <body>
     <header></header>
     <nav class="vertical">
         <ul>
@@ -28,6 +27,7 @@
         <h4><a class="link" href="#upcoming">Upcoming</a></h4>
         <h4><a class="link" href="#history">History</a></h4>
         <h4><a class="link requests hide" href="#managerField">Requests</a></h4>
+        <h4><a class="link requests hide" href="#leaveReports">Leave reports</a></h4>
     </aside>
     <article>
         <section>
@@ -37,36 +37,38 @@
         </div>
         <div class="leaveform hide tab" id="leavefrm">
             <div class="apply-box">
-            <div class="col1">
-                <div class="from-date floatleft">
-                    <label>From Date</label>
-                    <input type="text" id="fromdatepicker">
+                <div class="col1">
+                    <div class="from-date floatleft">
+                        <label>From Date</label></br>
+                        <input type="text" id="fromdatepicker">
+                    </div>
+                    <div class="to-date floatleft">
+                        <label>To Date</label></br>
+                        <input type="text" id="todatepicker">
+                    </div>
                 </div>
-                <div class="to-date floatleft">
-                    <label>To Date</label>
-                    <input type="text" id="todatepicker">
+                <div class="col1">
+                    <div class="type">
+                        <label>Type</label></br>
+                        <select name="leaveType" class="leaveType">
+                            <option value="">Select Leave Type</option>
+                            
+                            <option value="PTO">Paid Time Off (PTO)</option>
+                            
+                            <option value="ML">Maternity Leave</option>
+                            
+                            <option value="PL">Paternity Leave</option>
+                            
+                            <option value="COF">Compensatory-Off</option>
+                            
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="col1">
-                <div class="type">
-                    <label>Type</label>
-                    <select name="leaveType" class="leaveType">
-                        <option value="">Select Leave Type</option>
-                        
-                        <option value="PTO">Paid Time Off (PTO)</option>
-                        
-                        <option value="ML">Maternity Leave</option>
-                        
-                        <option value="PL">Paternity Leave</option>
-                        
-                        <option value="COF">Compensatory-Off</option>
-                        
-                    </select>
-                </div>
-            </div>
+                 <div class="col1">
                 <div class="description">
-                    <label>Description</label>
+                    <label>Description</label></br>
                     <textarea rows="4" cols="50" id="desc"></textarea>
+                </div>
                 </div>
                 <div class="frmbtn">
                     <button class="btn" id="leaveapply">Apply</button>
@@ -97,7 +99,7 @@
             </table>
         </div>
         <div class="history hide tab" id="history">
-             <table class="tblHistory">
+            <table class="tblHistory">
                 <tbody>
                     <tr class="trHeads">
                         <th>Start Date</th>
@@ -120,7 +122,7 @@
         </div>
         <div class="managerField hide tab" id="managerField">
             <h2>Requests raised</h2>
-            <table>
+            <table class="tblManager">
                 <tr>
                     <th>Emp ID</th>
                     <th>Name</th>
@@ -137,10 +139,10 @@
                     <td>4</td>
                     <td>
                         <button href="#" title="accept" class="request-approve">
-                            <i class="icon-ok fa fa-check"></i>
+                        <i class="icon-ok fa fa-check"></i>
                         </button>
                         <button href="#" title="reject" class="request-reject">
-                            <i class="icon-remove fa fa-times"></i>
+                        <i class="icon-remove fa fa-times"></i>
                         </button>
                     </td>
                 </tr>
@@ -152,22 +154,24 @@
                     <td>5</td>
                     <td>
                         <button href="#" title="accept" class="request-approve">
-                            <i class="icon-ok fa fa-check"></i>
+                        <i class="icon-ok fa fa-check"></i>
                         </button>
                         <button href="#" title="reject" class="request-reject">
-                            <i class="icon-remove fa fa-times"></i>
+                        <i class="icon-remove fa fa-times"></i>
                         </button>
                     </td>
                 </tr>
             </table>
             <div id="dialog-modal" title="Reason for Rejection " style="display: none;">
-                    <textarea></textarea>
-                    <button type="button" id="dialog-close">Confirm</button>
+                <textarea></textarea>
+                <button type="button" id="dialog-close">Confirm</button>
             </div>
+        </div>
+        <div class="leaveReports hide tab" id="leaveReports">
+        
         </div>
     </section>
 </article>
-
 <footer></footer>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -176,4 +180,3 @@
 <script src="../js/employee.js"></script>
 </body>
 </html>
-
