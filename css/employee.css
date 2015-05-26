@@ -10,13 +10,6 @@
 .hide {
   display: none;
 }
-
-/*body {
-    width: 940px;
-    margin: 0 auto;
-    font: 10pt/1.5em Helvetica,"Helvetica neue", Arial, sans-serif;
-}*/
-
 /*HTML 5 specific*/
 header,
 section,
@@ -104,13 +97,13 @@ nav.vertical a {
   width: 100%;
 }
 .leaveType{
-  width: 24%;
+  width: 42%;
   line-height: 43px;
   height: 33px;
   font-size: 15px;
 }
 .frmbtn .btn{
-  width: 13%;
+  width: 20%;
   right: 0;
 }
 input[type="text"]{
@@ -173,8 +166,6 @@ margin-top: 20px;
 .request-approve{
   color: green;
 }
-
-
 #linechart svg {
   height: 400px;
 }
@@ -324,8 +315,16 @@ aside h4 a:active {
     background-color: #005FBF;
     color: #fff;
 }
-
 .active {
     background-color: #005FBF;
     color: #fff;
+}
+#leaveform-dialog-modal{
+  width:600px !important;
+  height:400px !important;
+}
+#fromdatepicker, #todatepicker{
+  background-image: url(../images/calendar-icon.png);
+  background-repeat: no-repeat;
+  background-position: right;
 }
