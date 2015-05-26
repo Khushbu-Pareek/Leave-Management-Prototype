@@ -45,6 +45,7 @@ nav.vertical {
 }
 nav.vertical > ul {
   list-style-type: none;
+  margin-right: 10px;
 }
 nav.vertical > ul > li {
   display: block;
@@ -202,10 +203,9 @@ margin-right: 15px;
 }
 aside h4 a {
    text-decoration: none;
-  color: #0E6892;
+  color: #333;
   font-family: "source sans pro", sans-serif;
   font-weight: 500;
-  font-size: 18px;
 }
 .ui-datepicker-calendar, .ui-state-default, .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-defaul, .ui-datepicker-title{
@@ -215,4 +215,117 @@ aside h4 a {
 h2 {
     font-family: "source sans pro", sans-serif;
     font-weight: 400;
+}
+#myCanvas{
+  display: inline-block;
+  margin-left: 20%;
+}
+
+.preview{
+  width: 100%;
+}
+.preview-textfield{
+  display: inline-block; 
+  float: right;
+  margin-right: 20%;
+}
+
+.tbl {
+  margin:0px;
+  padding:0px;
+  width:100%;
+}.tbl table{
+    border-collapse: collapse;
+        border-spacing: 0;
+  width:100%;
+  height:100%;
+  margin:0px;padding:0px;
+}.tbl tr:last-child td:last-child {
+  -moz-border-radius-bottomright:0px;
+  -webkit-border-bottom-right-radius:0px;
+  border-bottom-right-radius:0px;
+}
+.tbl table tr:first-child td:first-child {
+  -moz-border-radius-topleft:0px;
+  -webkit-border-top-left-radius:0px;
+  border-top-left-radius:0px;
+}
+.tbl table tr:first-child td:last-child {
+  -moz-border-radius-topright:0px;
+  -webkit-border-top-right-radius:0px;
+  border-top-right-radius:0px;
+}.tbl tr:last-child td:first-child{
+  -moz-border-radius-bottomleft:0px;
+  -webkit-border-bottom-left-radius:0px;
+  border-bottom-left-radius:0px;
+}.tbl tr:hover td{
+  
+}
+.tbl tr:nth-child(odd){ background-color:#aad4ff; }
+.tbl tr:nth-child(even)    { background-color:#ffffff; }.tbl td{
+  vertical-align:middle;
+  
+  
+  border:1px solid #000000;
+  border-width:0px 1px 1px 0px;
+  text-align:left;
+  padding:7px;
+  font-size:15px;
+  font-family:Arial;
+  font-weight:normal;
+  color:#000000;
+}.tbl tr:last-child td{
+  border-width:0px 1px 0px 0px;
+}.tbl tr td:last-child{
+  border-width:0px 0px 1px 0px;
+}.tbl tr:last-child td:last-child{
+  border-width:0px 0px 0px 0px;
+}
+.tbl tr:first-child th{
+    background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+  background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");  background: -o-linear-gradient(top,#005fbf,003f7f);
+
+  background-color:#005fbf;
+  border:0px solid #000000;
+  text-align:center;
+  border-width:0px 0px 1px 1px;
+  font-size:15px;
+  font-family:Arial;
+  font-weight:bold;
+  color:#ffffff;
+}
+.tbl tr:first-child:hover td{
+  background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+  background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");  background: -o-linear-gradient(top,#005fbf,003f7f);
+
+  background-color:#005fbf;
+}
+.tbl tr:first-child td:first-child{
+  border-width:0px 0px 1px 0px;
+}
+.tbl tr:first-child td:last-child{
+  border-width:0px 0px 1px 1px;
+}
+
+aside h4 a:link, aside h4 a:visited{
+    width: 120px;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+}
+
+aside h4 a:hover{
+    background-color: #005FBF;
+    color: #fff;
+}
+aside h4 a:active {
+    background-color: #005FBF;
+    color: #fff;
+}
+
+.active {
+    background-color: #005FBF;
+    color: #fff;
 }

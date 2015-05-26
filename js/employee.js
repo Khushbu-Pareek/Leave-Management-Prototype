@@ -1,7 +1,6 @@
 function init() {
     initWidgets();
     bindEvents();
-    renderLeaveTallyChart();
 }
 
 function initWidgets() {
@@ -48,10 +47,25 @@ function bindEvents() {
         $('.tab').hide();
         theDiv = $(this).attr("href");
         $(theDiv).show();
+        if(!$(this).hasClass('active')) {
+          $('aside h4 a.active').removeClass('active');
+        }
+        $(this).addClass('active');
+        
     });
 
     $('.managerTab').on("click", function() {
-        $('.requests').show();
+        $('.mngReq').show();
+        $('.empReq').hide();
+        $('.tab').hide();
+        $('#managerField').show();
+    });
+
+     $('.employeeTab').on("click", function() {
+        $('.empReq').show();
+        $('.mngReq').hide();
+        $('.tab').hide();
+        $('#chart').show();
     });
 
     $('#managerField').on("click", function() {
@@ -71,51 +85,11 @@ function bindEvents() {
     $('#dialog-close').on("click", function() {
         $("#dialog-modal").dialog('close');
     });
-}
-/*-----  End of event bindings  ------*/
-
-/*=====================================
-=            Render Pie Chart         =
-=====================================*/
-
-function renderLeaveTallyChart() {
-
-    var sampleData = [{
-        key: "Total Leave",
-        y: 10
-    }, {
-        key: "Applied Leave",
-        y: 2
-    }, {
-        key: "Remaining Leave",
-        y: 8
-    }];
-
-    var height = 400;
-    var width = 400;
-
-    nv.addGraph(function() {
-        var chart = nv.models.pieChart()
-            .x(function(d) {
-                return d.key
-            })
-            .y(function(d) {
-                return d.y
-            })
-            .width(width)
-            .height(height);
-
-        d3.select("#LeaveTally")
-            .datum(sampleData)
-            .transition().duration(1200)
-            .attr('width', width)
-            .attr('height', height)
-            .call(chart);
-
-        return chart;
+    $(document.body).on('click', '.cancel' ,function() {
+         $(this).parent().parent().remove();
     });
 }
-/*-----  End of rendering Pie chart  ------*/
+/*-----  End of event bindings  ------*/
 
 var leaveDetails = {};
 
@@ -147,7 +121,7 @@ function showConfirmationBox() {
 }
 
 function updateUpcomingTable() {
-    $(".tblUpcoming > tbody").append("<tr><td> " + leaveDetails['startDate'] + "</td><td> " + leaveDetails['endDate'] + "</td>  <td>" + leaveDetails['type'] + "</td><td>" + leaveDetails['duration'] + "</td><td>" + leaveDetails['desc'] + "</td> <td>" + leaveDetails['status'] + "</td></tr>");
+    $(".tblUpcoming > tbody").append("<tr><td> " + leaveDetails['startDate'] + "</td><td> " + leaveDetails['endDate'] + "</td>  <td>" + leaveDetails['type'] + "</td><td>" + leaveDetails['duration'] + "</td><td>" + leaveDetails['desc'] + "</td> <td>" + leaveDetails['status'] + "</td><td><a href='#' title='edit' class='edit'>Edit/ </a><a href='#' title='cancel' class='cancel'>Cancel</a></td>     </tr>");
 }
 
 function showDialog() {
@@ -253,3 +227,25 @@ function data() {
   ];
 }
 /*-----  End of rendering line graph  ------*/
+
+var opts = {
+  lines: 12, // The number of lines to draw
+  angle: 0.15, // The length of each line
+  lineWidth: 0.44, // The line thickness
+  pointer: {
+    length: 0.9, // The radius of the inner circle
+    strokeWidth: 0.035, // The rotation offset
+    color: '#000000' // Fill color
+  },
+  limitMax: 'false',   // If true, the pointer will not go past the end of the gauge
+  colorStart: '#6FADCF',   // Colors
+  colorStop: '#8FC0DA',    // just experiment with them
+  strokeColor: '#E0E0E0',   // to see which ones work best for you
+  generateGradient: true
+};
+var target = document.getElementById('myCanvas'); // your canvas element
+var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+gauge.setTextField(document.getElementById("preview-textfield"));
+gauge.maxValue = 20; // set max gauge value
+gauge.animationSpeed = 98; // set animation speed (32 is default value)
+gauge.set(10); // set actual value
