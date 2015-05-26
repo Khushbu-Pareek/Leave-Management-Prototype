@@ -60,6 +60,7 @@ nav.vertical a {
 .frmbtn {
   position: relative;
   top: 35px;
+  text-align: center;
 }
 
 .btn {
@@ -197,7 +198,7 @@ aside h4 a {
   font-weight: 500;
 }
 .ui-datepicker-calendar{
-  color: purple !important;
+  color: #625E5E !important;
 
 }
 h2 {
@@ -324,4 +325,5 @@ aside h4 a:active {
   background-image: url(../images/calendar-icon.png);
   background-repeat: no-repeat;
   background-position: right;
+  border: 1px solid #BABABA;
 }
