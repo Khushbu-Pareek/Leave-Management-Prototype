@@ -41,9 +41,10 @@
                      <span>Availed Leaves: <span id="preview-textfield"></span></span>
                  </div>
              </div>
-            <button class="btn floatright" type="button" id="leaveform">+ New Request</button>
+            <button class="btn floatright" type="button" id="leaveform">Apply Leave</button>
         </div>
         <div class="leaveform hide tab" id="leavefrm">
+            <div id="leaveform-dialog-modal" title="Leave Form" style="display: none;">
             <div class="apply-box">
                 <div class="col1">
                     <div class="from-date floatleft">
@@ -82,6 +83,7 @@
                     <button class="btn" id="leaveapply" >Apply</button>
                     <button class="btn" id="leavecancel">Cancel</button>
                 </div>
+            </div>
             </div>
         </div>
         <div class="upcoming hide tab tbl" id="upcoming">
@@ -220,6 +222,11 @@
 </div>
         </div>
     </section>
+    <div id="message-dialog-modal" title="Confirmation" style="display: none;">
+        <p></p>
+        <button type="button" id="message-dialog-confirm">Confirm</button>
+        <button type="button" id="message-dialog-close">Cancel</button>
+    </div>
 </article>
 <footer></footer>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>

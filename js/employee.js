@@ -24,15 +24,20 @@ function initWidgets() {
 
 function bindEvents() {
     $('#leaveform').on("click", function() {
-        $('#leavefrm').show();
-    });
-
-    $('#leavecancel').on("click", function() {
         $('#fromdatepicker').datepicker('setDate', null);
         $('#todatepicker').datepicker('setDate', null);
         $('.apply-box .leaveType').val('');
         $('.apply-box textarea').val('');
-        $('#leavefrm').hide();
+        $('#leaveform-dialog-modal').dialog({
+            resizable: false,
+            height: 400,
+            width: 600,
+            modal: true,
+        });
+    });
+
+    $('#leavecancel').on("click", function() {
+        $("#leaveform-dialog-modal").dialog('close');
     });
 
     $('#leaveapply').on("click", function() {
@@ -101,11 +106,18 @@ function showConfirmationBox() {
     }
     else if($('.leaveType').val() == '')
     {
-         alert("Please select leave type"); 
+       alert("Please select leave type"); 
        return;
-    } 
-    else if (confirm("Are you sure you want to apply " + diff + " days leave") == true) {
-        $('#leavefrm').hide();
+    } else {
+       confirmLeaves(diff);
+    }
+}
+
+function confirmLeaves(diff){
+    $('#message-dialog-modal').dialog();
+    $('#message-dialog-modal p').html("Are you sure you want to apply " + diff + " days leave");
+    $('#message-dialog-confirm').on("click", function() {
+        $('#leaveform-dialog-modal').dialog('close');
         leaveDetails['startDate'] = $('#fromdatepicker').val();
         leaveDetails['endDate'] = $('#todatepicker').val();
         leaveDetails['type'] = $('.leaveType').val();
@@ -115,9 +127,12 @@ function showConfirmationBox() {
         updateUpcomingTable();
         $('.tab').hide();
         $('#upcoming').show();
-    } else {
-        $('#leavefrm').hide();
-    }
+        $('#message-dialog-modal').dialog('close');
+    });
+    $('#message-dialog-close').on("click", function() {
+        $('#leaveform-dialog-modal').dialog('close');
+        $('#message-dialog-modal').dialog('close');
+    });
 }
 
 function updateUpcomingTable() {
@@ -191,7 +206,7 @@ nv.addGraph(function() {
     ;
 
   chart.xAxis
-    .axisLabel('Time (ms)')
+    .axisLabel('Date')
     .tickFormat(d3.format(',r'))
     ;
 
@@ -212,15 +227,13 @@ nv.addGraph(function() {
 });
 
 function data() {
-  var sin = [];
-
-  for (var i = 0; i < 100; i++) {
-    sin.push({x: i, y: Math.sin(i/10)});
-  }
+  var sampleData = [{x: 5, y: 2}, {x: 10, y: 3}
+                , {x: 15, y: 1}, {x: 20, y: 5}
+                , {x: 25, y: 4}];
 
   return [
     {
-      values: sin,
+      values: sampleData,
       key: 'Leaves',
       color: '#ABB5F2'
     }
