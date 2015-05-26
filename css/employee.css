@@ -103,13 +103,13 @@ nav.vertical a {
   width: 100%;
 }
 .leaveType{
-  width: 24%;
+  width: 42%;
   line-height: 43px;
   height: 33px;
   font-size: 15px;
 }
 .frmbtn .btn{
-  width: 13%;
+  width: 20%;
   right: 0;
 }
 input[type="text"]{
@@ -172,8 +172,6 @@ margin-top: 20px;
 .request-approve{
   color: green;
 }
-
-
 #linechart svg {
   height: 400px;
 }
@@ -215,4 +213,13 @@ aside h4 a {
 h2 {
     font-family: "source sans pro", sans-serif;
     font-weight: 400;
+}
+#leaveform-dialog-modal{
+  width:600px !important;
+  height:400px !important;
+}
+#fromdatepicker, #todatepicker{
+  background-image: url(../Images/calendar-icon.png);
+  background-repeat: no-repeat;
+  background-position: right;
 }
