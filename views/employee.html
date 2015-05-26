@@ -17,21 +17,30 @@
                 <a href="#">Leave Management</a>
             </li>
             <li>
+                <a href="#" class="link employeeTab floatright">Employee</a>
+            </li>
+            <li>
                 <a href="#" class="link managerTab floatright">Manager</a>
             </li>
         </ul>
     </nav>
     <aside>
-        <h4><a class="link" href="#chart">Leave Tally</a></h4>
-        <h4><a class="link" href="#upcoming">Upcoming</a></h4>
-        <h4><a class="link" href="#history">History</a></h4>
-        <h4><a class="link requests hide" href="#managerField">Requests</a></h4>
-        <h4><a class="link requests hide linkReport" href="#leaveReports">Leave reports</a></h4>
+        <h4><a class="link empReq active" href="#chart">Leave Tally</a></h4>
+        <h4><a class="link empReq" href="#upcoming">Upcoming</a></h4>
+        <h4><a class="link empReq" href="#history">History</a></h4>
+        <h4><a class="link mngReq hide" href="#managerField">Requests</a></h4>
+        <h4><a class="link mngReq hide linkReport" href="#leaveReports">Leave reports</a></h4>
     </aside>
     <article>
         <section>
          <div class="chart tab" id="chart">
-            <svg id="LeaveTally" class="mypiechart"></svg>
+            <div class="preview">
+                 <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000000;"></canvas>
+                 <div class="preview-textfield">
+                     <span>Total Leaves:  &nbsp;&nbsp;&nbsp; 20</span></br>
+                     <span>Availed Leaves: <span id="preview-textfield"></span></span>
+                 </div>
+             </div>
             <button class="btn floatright" type="button" id="leaveform">+ New Request</button>
         </div>
         <div class="leaveform hide tab" id="leavefrm">
@@ -75,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div class="upcoming hide tab" id="upcoming">
+        <div class="upcoming hide tab tbl" id="upcoming">
             <h2>Upcoming Leaves</h2>
             <table class="tblUpcoming">
                 <tbody>
@@ -86,6 +95,7 @@
                         <th>Duration</th>
                         <th>Reason</th>
                         <th>Status</th>
+                        <th></th>
                     </tr>
                     <tr>
                         <td>03/05/2017</td>
@@ -94,11 +104,15 @@
                         <td>20</td>
                         <td></td>
                         <td>Approved</td>
+                        <td>
+                            <a href="#" title="edit" class="edit">Edit/</a>
+                            <a href="#" title="cancel" class="cancel">Cancel</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="history hide tab" id="history">
+        <div class="history hide tab tbl" id="history">
              <h2>History</h2>
             <table class="tblHistory">
                 <tbody>
@@ -118,10 +132,26 @@
                         <td></td>
                         <td>Approved</td>
                     </tr>
+                      <tr>
+                        <td>03/05/2017</td>
+                        <td>23/05/2017</td>
+                        <td>PTO</td>
+                        <td>20</td>
+                        <td></td>
+                        <td>Approved</td>
+                    </tr>
+                      <tr>
+                        <td>04/05/2017</td>
+                        <td>26/05/2017</td>
+                        <td>PTO</td>
+                        <td>23</td>
+                        <td></td>
+                        <td>Approved</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div class="managerField hide tab" id="managerField">
+        <div class="managerField hide tab tbl" id="managerField">
             <h2>Requests raised</h2>
             <table class="tblManager">
                 <tr>
@@ -185,6 +215,8 @@
             </div>
             <div id="linechart">
   <svg></svg>
+
+</canvas>
 </div>
         </div>
     </section>
@@ -194,6 +226,7 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
 <script src="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.js"></script>
+<script src="http://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
 <script src="../js/employee.js"></script>
 </body>
 </html>
