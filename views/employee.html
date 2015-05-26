@@ -25,15 +25,16 @@
         </ul>
     </nav>
     <aside>
-        <h4><a class="link empReq active" href="#chart">Leave Tally</a></h4>
-        <h4><a class="link empReq" href="#upcoming">Upcoming</a></h4>
+        <h4><a class="link empReq active leave" href="#chart">Leave Tally</a></h4>
+        <h4><a class="link empReq up" href="#upcoming">Upcoming</a></h4>
         <h4><a class="link empReq" href="#history">History</a></h4>
-        <h4><a class="link mngReq hide" href="#managerField">Requests</a></h4>
+        <h4><a class="link mngReq hide req" href="#managerField">Requests</a></h4>
         <h4><a class="link mngReq hide linkReport" href="#leaveReports">Leave reports</a></h4>
     </aside>
     <article>
         <section>
          <div class="chart tab" id="chart">
+         <h2>Leave Consumption Indicator</h2>
             <div class="preview">
                  <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000000;"></canvas>
                  <div class="preview-textfield">
@@ -197,7 +198,6 @@
             </table>
             <div id="dialog-modal" title="Reason for Rejection " style="display: none;">
                 <textarea></textarea>
-                <button type="button" id="dialog-close">Confirm</button>
             </div>
         </div>
         <div class="leaveReports hide tab" id="leaveReports">

@@ -142,12 +142,10 @@ margin-top: 20px;
   margin-left: 35%;
   margin-top: 15px;
 }
-#LeaveTally, #leaveTracker {
+#leaveTracker {
     display: block;
     height: 400px;
     width: 400px;
-    position: relative;
-    left: 26%
 }
 .managerTab {
   margin-bottom: 10px;
@@ -167,7 +165,7 @@ margin-top: 20px;
   color: green;
 }
 #linechart svg {
-  height: 400px;
+  height: 300px;
 }
 
 .filterow{
@@ -198,8 +196,7 @@ aside h4 a {
   font-family: "source sans pro", sans-serif;
   font-weight: 500;
 }
-.ui-datepicker-calendar, .ui-state-default, .ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-defaul, .ui-datepicker-title{
+.ui-datepicker-calendar{
   color: purple !important;
 
 }

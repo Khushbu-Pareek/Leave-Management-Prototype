@@ -64,6 +64,8 @@ function bindEvents() {
         $('.empReq').hide();
         $('.tab').hide();
         $('#managerField').show();
+        $('aside h4 a.active').removeClass('active');
+        $('.req').addClass('active');
     });
 
      $('.employeeTab').on("click", function() {
@@ -71,6 +73,8 @@ function bindEvents() {
         $('.mngReq').hide();
         $('.tab').hide();
         $('#chart').show();
+        $('aside h4 a.active').removeClass('active');
+        $('.leave').addClass('active');
     });
 
     $('#managerField').on("click", function() {
@@ -84,13 +88,14 @@ function bindEvents() {
     });
 
     $('.request-reject').on("click", function() {
-        showDialog();
+        var $row = $(this).parents('tr');
+        showDialog($row);
     });
 
     $('#dialog-close').on("click", function() {
         $("#dialog-modal").dialog('close');
     });
-    $(document.body).on('click', '.cancel' ,function() {
+    $(document.body).on('click', '.cancel, .request-approve' ,function() {
          $(this).parent().parent().remove();
     });
 }
@@ -127,6 +132,8 @@ function confirmLeaves(diff){
         updateUpcomingTable();
         $('.tab').hide();
         $('#upcoming').show();
+        $('aside h4 a.active').removeClass('active');
+        $('.up').addClass('active');
         $('#message-dialog-modal').dialog('close');
     });
     $('#message-dialog-close').on("click", function() {
@@ -139,8 +146,20 @@ function updateUpcomingTable() {
     $(".tblUpcoming > tbody").append("<tr><td> " + leaveDetails['startDate'] + "</td><td> " + leaveDetails['endDate'] + "</td>  <td>" + leaveDetails['type'] + "</td><td>" + leaveDetails['duration'] + "</td><td>" + leaveDetails['desc'] + "</td> <td>" + leaveDetails['status'] + "</td><td><a href='#' title='edit' class='edit'>Edit/ </a><a href='#' title='cancel' class='cancel'>Cancel</a></td>     </tr>");
 }
 
-function showDialog() {
-    $("#dialog-modal").dialog();
+function showDialog($row) {
+    $("#dialog-modal").dialog({
+        resizable: false,
+        modal: true,
+         buttons: {
+                "Confirm": function() {
+                    $row.remove();
+                    $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+    });
 }
 
 /*=====================================
@@ -261,4 +280,4 @@ var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 gauge.setTextField(document.getElementById("preview-textfield"));
 gauge.maxValue = 20; // set max gauge value
 gauge.animationSpeed = 98; // set animation speed (32 is default value)
-gauge.set(10); // set actual value
+gauge.set(3); // set actual value
