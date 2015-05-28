@@ -18,7 +18,7 @@ function loginValidation() {
 			break;
 		}				
 	}
-	isValid ? (window.location = 'employee.html') : alert("Shit!");
+	isValid ? (window.location = 'employee.html') : alert("Please enter valid username and password!");
 }
 
 //Json object with employees details
