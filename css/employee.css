@@ -51,7 +51,7 @@ nav.vertical a {
   display: block;
 }
 .from-date {
-  margin-right: 0px;
+  margin-right: 70px;
 }
 .to-date {
   margin-right: 60px;
@@ -357,4 +357,8 @@ height: 33px;
 
 .highcharts-button{
   display: none;
+}
+
+#filterform .from-date {
+  margin-right: 0px;
 }
