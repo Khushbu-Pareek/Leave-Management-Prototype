@@ -24,6 +24,14 @@ function initWidgets() {
 =====================================*/
 
 function bindEvents() {
+    var url = window.location.href,
+        isManager = parseInt(url.split('id=')[1]);
+
+    if(!isManager) {
+        $(".req").addClass('hide');
+        $(".linkReport").addClass('hide');
+    }
+
     $('#leaveform').on("click", function() {
         $('#fromdatepicker').datepicker('setDate', null);
         $('#todatepicker').datepicker('setDate', null);
@@ -58,24 +66,6 @@ function bindEvents() {
         }
         $(this).addClass('active');
 
-    });
-
-    $('.managerTab').on("click", function() {
-        $('.mngReq').show();
-        $('.empReq').hide();
-        $('.tab').hide();
-        $('#managerField').show();
-        $('aside h4 a.active').removeClass('active');
-        $('.req').addClass('active');
-    });
-
-    $('.employeeTab').on("click", function() {
-        $('.empReq').show();
-        $('.mngReq').hide();
-        $('.tab').hide();
-        $('#chart').show();
-        $('aside h4 a.active').removeClass('active');
-        $('.leave').addClass('active');
     });
 
     $('#managerField').on("click", function() {
