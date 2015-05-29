@@ -24,11 +24,12 @@ function initWidgets() {
 =====================================*/
 
 function bindEvents() {
-    var url = window.location.href,
-        isManager = parseInt(url.split('id=')[1]);
+  var url = window.location.href,
+    isManager = parseInt(url.split('id=')[1]);
 
     if(!isManager) {
-        $(".mngReq").addClass('hide');
+        $(".req").addClass('hide');
+        $(".linkReport").addClass('hide');
     }
 
     $('#leaveform').on("click", function() {
@@ -56,7 +57,7 @@ function bindEvents() {
         showConfirmationBox();
     });
 
-    $("aside h4 a").click(function() {
+    $("nav ul li a").click(function() {
         $('.tab').hide();
         theDiv = $(this).attr("href");
         $(theDiv).show();
@@ -65,6 +66,24 @@ function bindEvents() {
         }
         $(this).addClass('active');
 
+    });
+
+    $('.managerTab').on("click", function() {
+        $('.mngReq').show();
+        $('.empReq').hide();
+        $('.tab').hide();
+        $('#managerField').show();
+        $('aside h4 a.active').removeClass('active');
+        $('.req').addClass('active');
+    });
+
+    $('.employeeTab').on("click", function() {
+        $('.empReq').show();
+        $('.mngReq').hide();
+        $('.tab').hide();
+        $('#chart').show();
+        $('aside h4 a.active').removeClass('active');
+        $('.leave').addClass('active');
     });
 
     $('#managerField').on("click", function() {
@@ -279,6 +298,9 @@ function renderLeaveTrackerChart() {
 
 var chart = c3.generate({
     bindto: '#linechart',
+    size: {
+      width: 640
+    },
     onrendered: function () { 
             console.log('rendered...') 
              bindChartEvents();
@@ -292,9 +314,9 @@ var chart = c3.generate({
     bar: {
         width: {
             ratio: 0.5 // this makes bar width 50% of length between ticks
-        }
+        },  
         // or
-        //width: 100 // this makes bar width 100px
+        width: 100 // this makes bar width 100px
     },
     axis: {
         x: {
@@ -329,7 +351,7 @@ function bindChartEvents()
     bar: {
         width: {
             ratio: 0.5 // this makes bar width 50% of length between ticks
-        }
+        },
         // or
         //width: 100 // this makes bar width 100px
     },

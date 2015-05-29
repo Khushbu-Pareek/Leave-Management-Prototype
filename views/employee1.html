@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Leave Managment Tracker</title>
+        <link href="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="../css/employee1.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+    <body>
+    <header></header>
+    <nav class="vertical">
+        <ul>
+            <li>
+                <a href="#">Leave Management</a>
+            </li>
+            <!--            <li>
+                <a href="#" class="link employeeTab floatright">Employee</a>
+            </li>
+            <li>
+                <a href="#" class="link managerTab floatright">Manager</a>
+            </li> -->
+            <li><a class="link empReq active leave floatright " href="#chart">Leave Tally</a></li>
+            <li><a class="link empReq up floatright" href="#upcoming">Upcoming</a></li>
+            <li><a class="link empReq floatright" href="#history">History</a></li>
+            <li><a class="link mngReq  req floatright" href="#managerField">Requests</a></li>
+            <li><a class="link mngReq  linkReport floatright" href="#leaveReports">Leave reports</a></li>
+        </ul>
+    </nav>
+    <article>
+        <section>
+            <div class="chart tab" id="chart">
+                <h2>Leave Consumption Indicator</h2>
+                <div class="preview">
+                    <div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
+                </div>
+                <button class="btn floatright" type="button" id="leaveform">Apply Leave</button>
+            </div>
+            <div class="leaveform hide tab" id="leavefrm">
+                <div id="leaveform-dialog-modal" title="Leave Form" style="display: none;">
+                    <div class="apply-box">
+                        <div class="col1">
+                            <div class="from-date floatleft">
+                                <label>From Date</label></br>
+                                <input type="text" id="fromdatepicker">
+                            </div>
+                            <div class="to-date floatleft">
+                                <label>To Date</label></br>
+                                <input type="text" id="todatepicker">
+                            </div>
+                        </div>
+                        <div class="col1">
+                            <div class="type">
+                                <label>Type</label></br>
+                                <select name="leaveType" class="leaveType">
+                                    <option value="">Select Leave Type</option>
+                                    
+                                    <option value="PTO">Paid Time Off (PTO)</option>
+                                    
+                                    <option value="ML">Maternity Leave</option>
+                                    
+                                    <option value="PL">Paternity Leave</option>
+                                    
+                                    <option value="COF">Compensatory-Off</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col1">
+                            <div class="description">
+                                <label>Description</label></br>
+                                <textarea rows="4" cols="50" id="desc"></textarea>
+                            </div>
+                        </div>
+                        <div class="frmbtn">
+                            <button class="btn" id="leaveapply" >Apply</button>
+                            <button class="btn" id="leavecancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upcoming hide tab tbl" id="upcoming">
+                <h2>Upcoming Leaves</h2>
+                <table class="tblUpcoming">
+                    <tbody>
+                        <tr class="trHeads">
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Type</th>
+                            <th>Duration</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>03/05/2017</td>
+                            <td>23/05/2017</td>
+                            <td>PTO</td>
+                            <td>20</td>
+                            <td></td>
+                            <td>Approved</td>
+                            <td>
+                                <a href="#" title="edit" class="edit">Edit/</a>
+                                <a href="#" title="cancel" class="cancel">Cancel</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="history hide tab tbl" id="history">
+                <h2>History</h2>
+                <table class="tblHistory">
+                    <tbody>
+                        <tr class="trHeads">
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Type</th>
+                            <th>Duration</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>03/05/2017</td>
+                            <td>23/05/2017</td>
+                            <td>PTO</td>
+                            <td>20</td>
+                            <td></td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr>
+                            <td>03/05/2017</td>
+                            <td>23/05/2017</td>
+                            <td>PTO</td>
+                            <td>20</td>
+                            <td></td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr>
+                            <td>04/05/2017</td>
+                            <td>26/05/2017</td>
+                            <td>PTO</td>
+                            <td>23</td>
+                            <td></td>
+                            <td>Approved</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="managerField hide tab tbl" id="managerField">
+                <h2>Requests Raised</h2>
+                <table class="tblManager">
+                    <tr>
+                        <th>Emp ID</th>
+                        <th>Name</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>No. of Days</th>
+                        <th>Approve/Reject</th>
+                    </tr>
+                    <tr>
+                        <td>112</td>
+                        <td>Ajay Singh</td>
+                        <td>02-06-2015</td>
+                        <td>07-06-2015</td>
+                        <td>4</td>
+                        <td>
+                            <button href="#" title="accept" class="request-approve">
+                            <i class="icon-ok fa fa-check"></i>
+                            </button>
+                            <button href="#" title="reject" class="request-reject">
+                            <i class="icon-remove fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>201</td>
+                        <td>Aman Yadav</td>
+                        <td>20-06-2015</td>
+                        <td>26-06-2015</td>
+                        <td>5</td>
+                        <td>
+                            <button href="#" title="accept" class="request-approve">
+                            <i class="icon-ok fa fa-check"></i>
+                            </button>
+                            <button href="#" title="reject" class="request-reject">
+                            <i class="icon-remove fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <div id="dialog-modal" title="Reason for Rejection " style="display: none;">
+                    <textarea></textarea>
+                </div>
+            </div>
+            <div class="leaveReports hide tab" id="leaveReports">
+                <div class="filterow">
+                    <div class="span3">
+                        <a href="#" id="filter" class="fbtn btn-primary"><i class="fa fa-filter"></i>&nbsp;  Filter</a>
+                    </div>
+                </div>
+                <h2>Team Leaves</h2>
+                <div id="filterform" class="hide">
+                    <form>
+                        <div class="col1">
+                            <div class="from-date floatleft">
+                                <label>Employee name</label></br>
+                                <input type="text" id="">
+                            </div>
+                            <div class="to-date floatleft">
+                                <label>Leave Status</label></br>
+                                <select name="leaveType" class="leaveStatus">
+                                    <option value="">Select Leave Type</option>
+                                    <option value="A">Approve</option>
+                                    <option value="R">Reject</option>
+                                </select>
+                            </div>
+                            <div class="btn_div">
+                                <button type="button" class="fbtn btn-primary" id="search">Search</button>
+                                <button type="button" class="fbtn btn-primary" id="reset">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                <div class="leaveTrackerChart" id="leaveTrackerChart">
+                <svg id="leaveTracker" class="mypiechart"></svg>
+            </div>
+            <div id="linechart"></div>
+            </div>
+        </div>
+    </section>
+    <div id="message-dialog-modal" title="Confirmation" style="display: none;">
+        <p></p>
+        <button type="button" id="message-dialog-confirm">Confirm</button>
+        <button type="button" id="message-dialog-close">Cancel</button>
+    </div>
+</article>
+<footer></footer>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+<script src="https://cdn.rawgit.com/novus/nvd3/v1.7.1/build/nv.d3.js"></script>
+<script src="http://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="../js/employee1.js"></script>
+</body>
+</html>
