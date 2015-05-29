@@ -18,7 +18,8 @@ function loginValidation() {
 			break;
 		}				
 	}
-	isValid ? (window.location = 'employee.html') : alert("Please enter valid username and password!");
+	isValid ? (window.location = 'employee.html?id=' + oEmployeeInfo.employees[i].flagType) : 
+	alert("Please enter valid username and password!");
 }
 
 //Json object with employees details
@@ -26,17 +27,13 @@ var oEmployeeInfo = {
 	"employees": [{
 		"fullName": "Jay Pullur",
 		"firstName": "Jay",
-		"isManager": 1,
-		"isHr": 0,
-		"isAdmin": 0,
+		"flagType": 1, //1 means manager
 		"userName": "JayP",
 		"pswrd": "pass@123"
 	}, {
 		"fullName": "Sanjay Sharma",
 		"firstName": "Sanjay",
-		"isManager": 0,
-		"isHr": 0,
-		"isAdmin": 0,
+		"flagType": 0, //0 means employee
 		"userName": "SanjayS",
 		"pswrd": "pramati123"
 	}]
